@@ -1,10 +1,13 @@
 import { Application } from "/deps.ts";
 
 import baseRouter from "/handlers/base.ts";
+import robotRouter from "/handlers/robot.ts";
 
 const app = new Application();
 app.use(baseRouter.routes());
 app.use(baseRouter.allowedMethods());
+app.use(robotRouter.routes());
+app.use(robotRouter.allowedMethods());
 
 console.log("tinyRobots server is running at http://localhost:8000");
 

@@ -5,7 +5,8 @@ import { bundleIndexJs } from "/utils/build.ts";
 const webappPath = "../webapp/";
 
 function getPing(ctx: Context): void {
-  ctx.response.body = "pong!";
+  ctx.response.body = `{"status": "pong!"}`;
+  ctx.response.headers.append("Content-type", "application/json");
 }
 
 async function getIndex(ctx: Context): Promise<void> {
