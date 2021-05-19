@@ -1,4 +1,5 @@
 import { React, ReactDOM } from "/deps.ts";
+import { require } from "/deps.ts";
 
 import App from "/screens/App.tsx";
 
