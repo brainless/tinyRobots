@@ -1,22 +1,30 @@
-import { Context, Router } from "/deps.ts";
+import { OakContext, OakRouter } from "/deps.ts";
+import { RobotInterface } from "/utils/interfaces.ts";
 
-interface Robot {
-  name: string;
-}
+type RobotList = Array<RobotInterface>;
 
-type RobotList = Array<Robot>;
+const sampleRobotList: RobotList = [];
 
-const sampleRobotList: RobotList = [
-  { name: "Twitter Search" },
-  { name: "E-commerce Sales" },
-];
-
-function listRobot(ctx: Context) {
+function listRobot(ctx: OakContext) {
   ctx.response.body = JSON.stringify(sampleRobotList);
   ctx.response.headers.append("Content-type", "application/json");
 }
 
-const router = new Router();
+async function addRobot(ctx: OakContext) {
+  const json = await ctx.request.body().value;
+  const { defineRobot } = await import(json.path);
+  console.log(defineRobot());
+
+  ctx.response.body = JSON.stringify({
+    status: "created",
+    robot: defineRobot(),
+  });
+  ctx.response.status = 201;
+  ctx.response.headers.append("Content-type", "application/json");
+}
+
+const router = new OakRouter();
 router.get("/api/robot", listRobot);
+router.post("/api/robot", addRobot);
 
 export default router;

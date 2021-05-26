@@ -1,9 +1,9 @@
-import { Application } from "/deps.ts";
+import { OakApplication } from "/deps.ts";
 
 import baseRouter from "/handlers/base.ts";
 import robotRouter from "/handlers/robot.ts";
 
-const app = new Application();
+const app = new OakApplication();
 app.use(baseRouter.routes());
 app.use(baseRouter.allowedMethods());
 app.use(robotRouter.routes());
