@@ -7,7 +7,7 @@ const sampleRobotList: RobotList = [];
 
 function listRobot(ctx: OakContext) {
   ctx.response.body = JSON.stringify(sampleRobotList);
-  ctx.response.headers.append("Content-type", "application/json");
+  ctx.response.headers.append("Content-Type", "application/json");
 }
 
 async function addRobot(ctx: OakContext) {
@@ -19,7 +19,7 @@ async function addRobot(ctx: OakContext) {
     robot: defineRobot(),
   });
   ctx.response.status = 201;
-  ctx.response.headers.append("Content-type", "application/json");
+  ctx.response.headers.append("Content-Type", "application/json");
 }
 
 async function outputRobot(ctx: OakContext) {
@@ -32,7 +32,7 @@ async function outputRobot(ctx: OakContext) {
     data: outputData,
   });
   ctx.response.status = 201;
-  ctx.response.headers.append("Content-type", "application/json");
+  ctx.response.headers.append("Content-Type", "application/json");
 }
 
 const router = new OakRouter();

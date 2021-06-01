@@ -9,9 +9,11 @@ async function corsHeaders(
 ): Promise<void> {
   await next();
   ctx.response.headers.append(
-    "Access-control-allow-origin",
+    "Access-Control-Allow-Origin",
     "http://localhost:3000"
   );
+  ctx.response.headers.append("Access-Control-Allow-Methods", "*");
+  ctx.response.headers.append("Access-Control-Allow-Headers", "Content-Type");
 }
 
 const app = new OakApplication();

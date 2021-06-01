@@ -11,7 +11,7 @@ async function listOperators(ctx: Context, next: () => Promise<unknown>) {
 
   if (ctx.request.url.pathname == "/operators/list") {
     ctx.response.body = JSON.stringify(operators);
-    ctx.response.headers.append("Content-type", "application/json");
+    ctx.response.headers.append("Content-Type", "application/json");
   } else {
     await next();
   }

@@ -4,19 +4,19 @@ const webappPath = "../frontend/";
 
 function getPing(ctx: OakContext): void {
   ctx.response.body = `{"status": "pong!"}`;
-  ctx.response.headers.append("Content-type", "application/json");
+  ctx.response.headers.append("Content-Type", "application/json");
 }
 
 async function getIndex(ctx: OakContext): Promise<void> {
   const contents = await Deno.readTextFile(`${webappPath}public/index.html`);
   ctx.response.body = contents;
-  ctx.response.headers.append("Content-type", "text/html");
+  ctx.response.headers.append("Content-Type", "text/html");
 }
 
 async function getJSBundle(ctx: OakContext): Promise<void> {
   const contents = await Deno.readTextFile(`${webappPath}public/js/main.js`);
   ctx.response.body = contents;
-  ctx.response.headers.append("Content-type", "application/javascript");
+  ctx.response.headers.append("Content-Type", "application/javascript");
 }
 
 const router = new OakRouter();
