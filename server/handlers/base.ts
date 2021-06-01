@@ -1,7 +1,6 @@
-import { OakContext, OakRouter } from "/deps.ts";
-import { bundleIndexJs } from "/utils/build.ts";
+import { OakContext, OakRouter } from "prj/deps.ts";
 
-const webappPath = "../webapp/";
+const webappPath = "../frontend/";
 
 function getPing(ctx: OakContext): void {
   ctx.response.body = `{"status": "pong!"}`;
@@ -15,7 +14,6 @@ async function getIndex(ctx: OakContext): Promise<void> {
 }
 
 async function getJSBundle(ctx: OakContext): Promise<void> {
-  await bundleIndexJs(`${webappPath}public/js/main.js`);
   const contents = await Deno.readTextFile(`${webappPath}public/js/main.js`);
   ctx.response.body = contents;
   ctx.response.headers.append("Content-type", "application/javascript");
