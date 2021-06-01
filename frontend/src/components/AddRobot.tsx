@@ -20,7 +20,7 @@ function AddRobot() {
       const response = await api.post("/api/robot", {
         path: robotPath,
       });
-      console.log(response.data);
+      addRobot(response.data);
     }
   }
 
@@ -28,7 +28,7 @@ function AddRobot() {
     <>
       <h3>Add a Robot</h3>
       <input
-        className="text-sm p-2 border rounded-md w-full"
+        className="text-sm p-2 border rounded-md w-full outline-none focus:bg-yellow-50"
         placeholder="file:/// or https://"
         value={robotPath}
         onChange={handleAddRobotPath}

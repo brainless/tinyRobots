@@ -1,13 +1,13 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Browser from "./components/Browser";
+import Manager from "components/Manager";
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/" exact>
-          <Browser />
+          <Manager />
         </Route>
       </Switch>
     </BrowserRouter>

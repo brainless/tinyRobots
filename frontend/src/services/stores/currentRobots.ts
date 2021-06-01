@@ -1,17 +1,17 @@
 import create from "zustand";
 
-type Robot = {
+export interface IRobot {
   name: string;
-};
+}
 
-type CurrentRobots = {
-  robots: Array<Robot>;
-  addRobot: (robot: Robot) => void;
-};
+interface CurrentRobots {
+  robots: Array<IRobot>;
+  addRobot: (robot: IRobot) => void;
+}
 
 const useCurrentRobots = create<CurrentRobots>((set) => ({
   robots: [],
-  addRobot: (robot: Robot) => {
+  addRobot: (robot: IRobot) => {
     set((state: CurrentRobots) => ({
       robots: [...state.robots, robot],
     }));
